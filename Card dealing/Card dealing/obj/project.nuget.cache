@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "UM2L+8Hy1VHn81SOlWS42H5+zrGq5tYrB1gaewiuxE7bds+S2XZIEceZGy86McKv3HnQpiYK2HnWh7iUM1KYRA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Golde\\source\\repos\\Card dealing\\Card dealing\\Card dealing.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Golde\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.14\\microsoft.netcore.app.host.win-x64.3.1.14.nupkg.sha512",
+    "C:\\Users\\Golde\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Golde\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Golde\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
