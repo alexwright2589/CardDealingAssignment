@@ -8,10 +8,10 @@ namespace Card_dealing
     {
         // creates the variables suit and face and sets them as a string value
         private string suit;
-        private string face;
+        private int face;
 
         //makes these variables = the string the method requires to take in
-        public Card(string cardFace, string cardSuit)
+        public Card(int cardFace, string cardSuit)
         {
             suit = cardSuit;
             face = cardFace;
@@ -19,7 +19,16 @@ namespace Card_dealing
         // creates the layout to output the cards
         public override string ToString()
         {
-            return face + " of " + suit;
+            if (face == 14)
+                return "Ace" + " of " + suit;
+            if (face == 11)
+                return "Jack" + " of " + suit;
+            if (face == 12)
+                return "Queen" + " of " + suit;
+            if (face == 13)
+                return "King" + " of " + suit;
+            else
+                return face + " of " + suit;
 
         }
     }

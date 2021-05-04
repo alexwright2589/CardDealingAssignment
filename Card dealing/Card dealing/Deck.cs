@@ -12,12 +12,13 @@ namespace Card_dealing
         private int currentCard;
         private const int num_cards = 52;
         private Random ranNum;
-        
+        public int PlayerorComputer;
+
         // where the deck is populated with each face matching a suit
         public Deck()
         {
             string[] suits = { "Hearts", "Clubs", "Spades", "Diamonds" };
-            string[] faces = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" };
+            int[] faces = { 2, 3, 4, 5, 6, 7, 8, 9 ,10, 11, 12, 13, 14};
             deck = new Card[num_cards];
             currentCard = 0;
             ranNum = new Random();
@@ -51,11 +52,18 @@ namespace Card_dealing
         // used to deal a card when the user asks for one by keeping track of the current card and returning the card at this index
         public Card DealCard()
         {
+            PlayerorComputer++;
             if (currentCard < 53)
-                return deck[currentCard++];
+            {
+                for (int i = 0; i < 10; i++)
+                    Hand.hand(deck[currentCard++], PlayerorComputer);
+            }
             else
+            {
                 Console.WriteLine("The deck is empty all cards have been delt");
                 return null;
+            }
+            return null;
         }
     }
 }
