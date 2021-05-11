@@ -4,6 +4,8 @@ namespace Card_dealing
 {
     public class Program
     {
+        public static Hand PlayersHand { get; private set; }
+        public static Hand ComputersHand { get; private set; }
         static void Main(string[] args)
         {
             // goes over to the deck class creating an array as deck1
@@ -28,9 +30,9 @@ namespace Card_dealing
                     // deals a card and minuses one from the deck count and outputs the card and amount of cards left
                     for (int i = 0; i < 20; i++)
                         count--;
-                    Deck dealcard = new Deck();
-                    Console.WriteLine(deck1.DealCard());
-                    Console.WriteLine(deck1.DealCard());
+                    player(deck1);
+                    computer(deck1);
+                    Play(deck1);
                     Console.WriteLine("The computers cards have been dealt");
                     Console.WriteLine(count + " cards left in the deck");
                     break;
@@ -48,6 +50,37 @@ namespace Card_dealing
                 }
             }
         }
+        public static void player(Deck deck1)
+        {
+            PlayersHand = new Hand(deck1);
+        }
+        public static void computer(Deck deck1)
+        {
+            ComputersHand = new Hand(deck1);
+        }
+        private static Card Play(Deck deck1)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (((PlayersHand.newHand[(i*2)]).face + (PlayersHand.newHand[(i*2)+1]).face) > ((ComputersHand.newHand[i*2]).face + (ComputersHand.newHand[(i*2)+1]).face))
+                {
+                    Human.increasehuman();
+
+                }
+                if (((PlayersHand.newHand[(i * 2)]).face + (PlayersHand.newHand[(i * 2) + 1]).face) < ((ComputersHand.newHand[i * 2]).face + (ComputersHand.newHand[(i * 2) + 1]).face))
+                {
+                    Computer.increasecomputer();
+                }
+                else
+                {
+                    Console.WriteLine($"Looks like it was a draw you both get a point!");
+                    Human.increasehuman();
+                    Computer.increasecomputer();
+                }
+            }
+            return null;
+        }
+        
     }
 }
     

@@ -4,23 +4,22 @@ namespace Card_dealing
 {
     public class Hand
     {
-        public static void hand(Card card, int PlayerorComputer)
+        public List<Card> newHand { get; private set; }
+
+        public Hand(Deck deck1)
         {
-            if (PlayerorComputer == 1)
+            hand(deck1);
+        }
+        private void hand(Deck deck1)
+        {
+            newHand = new List<Card>();
+            for (int i = 0; i < 10; i++)
+                newHand.Add(deck1.DealCard());
+            Console.WriteLine(" ");
+            foreach (var i in newHand)
             {
-                List<Card> newHand1 = new List<Card>();
-                newHand1.Add(card);
-                foreach (var i in newHand1)
-                {
-                    Console.WriteLine(i);
-                }
-            }
-            else
-            {
-                List<Card> newHand2 = new List<Card>();
-                newHand2.Add(card);
+                Console.WriteLine(i);
             }
         }
-
     }
 }

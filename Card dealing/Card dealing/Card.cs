@@ -7,8 +7,8 @@ namespace Card_dealing
     public class Card
     {
         // creates the variables suit and face and sets them as a string value
-        private string suit;
-        private int face;
+        public string suit;
+        public int face;
 
         //makes these variables = the string the method requires to take in
         public Card(int cardFace, string cardSuit)
