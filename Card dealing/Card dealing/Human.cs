@@ -3,30 +3,27 @@ namespace Card_dealing
 {
     public class Human : Player
     {
+        internal static object player1;
+
         public override void AbstractMethod()
         {
-            _score++;
+            _ID++;
         }
 
         public override int ID
         {
             get
             {
-                return _ID + 1;
+                return _ID;
             }
         }
-        public override int Score
-        {
-            get
-            {
-                return _score;
-            }
-        }
-        public static void increasehuman()
+
+
+        public static void humanID()
         {
             var round = new Human();
             round.AbstractMethod();
-            Console.WriteLine($"Well done you won that round, ID = {round.ID}, Score = {round.Score}");
+            Console.WriteLine($"Humans ID = {round.ID}");
         }
     }
 }

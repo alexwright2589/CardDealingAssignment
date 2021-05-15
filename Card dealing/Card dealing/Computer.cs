@@ -5,28 +5,21 @@ namespace Card_dealing
     {
         public override void AbstractMethod()
         {
-            _score++;
+            _ID++;
         }
 
         public override int ID
         {
             get
             {
-                return _ID + 2;
+                return _ID + 1;
             }
         }
-        public override int Score
-        {
-            get
-            {
-                return _score;
-            }
-        }
-        public static void increasecomputer()
+        public static void computerID()
         {
             var round = new Computer();
             round.AbstractMethod();
-            Console.WriteLine($"Unlucky the computer won that round, ID = {round.ID}, Score = {round.Score}");
+            Console.WriteLine($"Computers ID = {round.ID}");
         }
     }
 }
