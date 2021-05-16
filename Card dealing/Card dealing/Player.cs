@@ -8,9 +8,17 @@ namespace Card_dealing
         public abstract void AbstractMethod();
         public abstract int ID { get; }
 
-        public int increasescore()
+        public int increasescore(int x)
         {
-            return score++;
+            if (x > 0)
+            {
+                score++;
+                return score++;
+            }
+            else
+            {
+                return score++;
+            }
         }
 
     }

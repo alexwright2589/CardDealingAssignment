@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Card_dealing
 {
@@ -6,6 +7,10 @@ namespace Card_dealing
     {
         public static Hand PlayersHand { get; private set; }
         public static Hand ComputersHand { get; private set; }
+        public static Hand PlayersCards { get; private set; }
+        public static Hand ComputersCards { get; private set; }
+        public static int Counter;
+        public static int count;
         static void Main(string[] args)
         {
             // goes over to the deck class creating an array as deck1
@@ -32,7 +37,9 @@ namespace Card_dealing
                         count--;
                     player(deck1);
                     computer(deck1);
-                    Play();
+                    _player(deck1);
+                    _computer(deck1);
+                    Play(deck1);
                     Console.WriteLine("The computers cards have been dealt");
                     Console.WriteLine(count + " cards left in the deck");
                     break;
@@ -58,7 +65,15 @@ namespace Card_dealing
         {
             ComputersHand = new Hand(deck1);
         }
-        private static Card Play()
+        public static void _player(Deck deck1)
+        {
+            PlayersCards = new Hand(deck1);
+        }
+        public static void _computer(Deck deck1)
+        {
+            ComputersCards = new Hand(deck1);
+        }
+        public static Card Play(Deck deck1)
         {
             Human player1 = new Human();
             Computer computer1 = new Computer();
@@ -70,11 +85,13 @@ namespace Card_dealing
                     string answer = Console.ReadLine();
                     if (answer == "1")
                     {
+                        Console.WriteLine($"\nYour cards are: {PlayersHand.newHand[(i*2)]} {PlayersHand.newHand[(i*2)+1]}");
+                        Console.WriteLine($"The computers cards are: {ComputersHand.newHand[i * 2]} {ComputersHand.newHand[(i * 2) + 1]}");
                         if (((PlayersHand.newHand[(i * 2)]).face + (PlayersHand.newHand[(i * 2) + 1]).face) > ((ComputersHand.newHand[i * 2]).face + (ComputersHand.newHand[(i * 2) + 1]).face))
                         {
                             Console.WriteLine("\nWell done looks like you won that round!! ");
                             Human.humanID();
-                            player1.increasescore();
+                            player1.increasescore(Counter);
                             Console.WriteLine($"Players score is: {player1.score}");
 
                         }
@@ -82,18 +99,23 @@ namespace Card_dealing
                         {
                             Console.WriteLine("\nUnlucky looks like the computer won that round ");
                             Computer.computerID();
-                            computer1.increasescore();
+                            computer1.increasescore(Counter);
                             Console.WriteLine($"Computers score is: {computer1.score}");
                         }
                         if (((PlayersHand.newHand[(i * 2)]).face + (PlayersHand.newHand[(i * 2) + 1]).face) == ((ComputersHand.newHand[i * 2]).face + (ComputersHand.newHand[(i * 2) + 1]).face))
                         {
-                            Console.WriteLine($"\nLooks like it was a draw you both get a point!");
-                            Human.humanID();
-                            player1.increasescore();
-                            Console.WriteLine($"Players score is: {player1.score}");
-                            Computer.computerID();
-                            computer1.increasescore();
-                            Console.WriteLine($"Computers score is: {computer1.score}");
+                            if (i == 4)
+                            {
+                                Console.WriteLine($"\nLooks like it was a draw whoever wins the next round gets all the points!!!");
+                                count++;
+                            }
+                            else
+                            {
+                                Counter++;
+                                Console.WriteLine($"\nLooks like it was a draw whoever wins the next round gets all the points!!!");
+                                Human.humanID();
+                                Computer.computerID();
+                            }
                         }
                         break;
                     }
@@ -110,8 +132,39 @@ namespace Card_dealing
                 }
             }
 
-        Console.WriteLine($"\n\nThe final scores are: \n {computer1.score} points to the computer \n {player1.score} points to the player ");
-        return null;
+            Console.WriteLine($"\n\nThe final scores are: \n {computer1.score} points to the computer \n {player1.score} points to the player ");
+
+            if ((computer1.score == player1.score) && (count == 1))
+            {
+                Console.WriteLine($"Looks like its a draw you both got {player1.score} points, Would you like to deal another card each from the remaining deck? 1 for yes 2 for no.");
+                string ans = Console.ReadLine();
+                if (ans == "1")
+                {
+                    while (true)
+                    {
+                        for (int i = 0; i < 10; i++)
+                        {
+                            if ((PlayersCards.newHand2[i].face) > (ComputersCards.newHand2[i].face))
+                            {
+                                Console.WriteLine($"Well done you have won the game!");
+                                break;
+                            }
+                            if ((PlayersCards.newHand2[i].face) < (ComputersCards.newHand2[i].face))
+                            {
+                                computer1.increasescore(Counter);
+                                Console.WriteLine($"Oh no looks like the computer won :(");
+                                break;
+                            }
+                            if ((PlayersCards.newHand2[i].face) == (ComputersCards.newHand2[i].face))
+                            {
+                                Console.WriteLine("A draw again!! Another card will be drawn.");
+                                continue;
+                            }
+                        }
+                    }
+                }
+            }
+            return null;
         }
         
     }
