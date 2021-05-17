@@ -1,15 +1,15 @@
 ﻿using System;
 namespace Card_dealing
 {
+    // inherits the score and ID
     public class Human : Player
     {
-        internal static object player1;
-
+        //abstract method using polymorphism to increase the ID number for the player so its correct
         public override void AbstractMethod()
         {
             _ID++;
         }
-
+        //ovverides the ID function and sets it to 1
         public override int ID
         {
             get
@@ -18,7 +18,7 @@ namespace Card_dealing
             }
         }
 
-
+        // outputs the ID number
         public static void humanID()
         {
             var round = new Human();
