@@ -119,7 +119,6 @@ namespace Card_dealing
                         {
                             if (i == 4)
                             {
-                                Console.WriteLine($"\nLooks like it was a draw whoever wins the next round wins the game!!!");
                                 Draw(deck1, player1, computer1);
                             }
                             else
@@ -149,7 +148,6 @@ namespace Card_dealing
                     }
                 }
             }
-            Draw(deck1, player1, computer1);
             // outputs the winner if the game is finished and not a draw
             Console.WriteLine($"\n\nThe final scores are: \n {computer1.score} points to the computer \n {player1.score} points to the player ");
             if (computer1.score > player1.score)
@@ -167,7 +165,7 @@ namespace Card_dealing
             // if the game is a draw will output another card for each player and whichever is biggest wins the game
             while (true)
             {
-                Console.WriteLine($"Looks like its a draw you both got {player1.score} points, Would you like to deal another card each from the remaining deck? 1 for yes 2 for no.");
+                Console.WriteLine($"Looks like its a draw the points as stand are:\n{player1.score} points to you\n{computer1.score} to the computer \nWould you like to deal another card each from the remaining deck? 1 for yes 2 for no.");
                 string ans = Console.ReadLine();
                 if (ans == "1")
                 {
@@ -179,14 +177,13 @@ namespace Card_dealing
                         if ((PlayersCards.newHand2[i].face) < (ComputersCards.newHand2[i].face))
                         {
                             player1.increasescore(Counter);
-                            Console.WriteLine($"Well done you have won the game!");
+                            // sets i to 2 so it doesnt loop if won
                             i = 2;
                             
                         }
                         if ((PlayersCards.newHand2[i].face) > (ComputersCards.newHand2[i].face))
                         {
                             computer1.increasescore(Counter);
-                            Console.WriteLine($"Oh no looks like the computer won :(");
                             i = 2;
                             
                         }
@@ -203,6 +200,7 @@ namespace Card_dealing
                     Console.WriteLine("Thanks and goodbye");
                     break;
                 }
+                // exception handling
                 else
                 {
                     Console.WriteLine("Not valid input");

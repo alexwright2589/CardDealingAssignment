@@ -6,7 +6,7 @@ namespace Card_dealing
     {
         public int score { get; set; }
         protected int _ID = 0;
-        public abstract void AbstractMethod();
+        public abstract void IncreaseID();
         public abstract int ID { get; }
         // used to increase the score when neccessary for the computer and player
         public int increasescore(int x)

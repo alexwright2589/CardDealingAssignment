@@ -5,7 +5,7 @@ namespace Card_dealing
     public class Computer : Player
     {
         //abstract method using polymorphism to increase the ID number for the computer so its correct
-        public override void AbstractMethod()
+        public override void IncreaseID()
         {
             _ID++;
         }
@@ -21,7 +21,7 @@ namespace Card_dealing
         public static void computerID()
         {
             var round = new Computer();
-            round.AbstractMethod();
+            round.IncreaseID();
             Console.WriteLine($"Computers ID = {round.ID}");
         }
     }

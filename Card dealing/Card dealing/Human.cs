@@ -5,7 +5,7 @@ namespace Card_dealing
     public class Human : Player
     {
         //abstract method using polymorphism to increase the ID number for the player so its correct
-        public override void AbstractMethod()
+        public override void IncreaseID()
         {
             _ID++;
         }
@@ -22,7 +22,7 @@ namespace Card_dealing
         public static void humanID()
         {
             var round = new Human();
-            round.AbstractMethod();
+            round.IncreaseID();
             Console.WriteLine($"Humans ID = {round.ID}");
         }
     }
